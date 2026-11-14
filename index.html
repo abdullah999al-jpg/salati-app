@@ -1,0 +1,1531 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0f2d44">
+<meta name="description" content="صلاتي — منصة عربية تفاعلية لتعلّم الصلاة بالصور والمراجعة والاختبارات">
+<title>صلاتي | تعلّم وأتقن</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+/* ====== Design Tokens ====== */
+:root{
+  --navy:#0f2d44;
+  --navy-2:#143650;
+  --navy-3:#1c4763;
+  --teal:#0f8a8f;
+  --teal-2:#12a5a0;
+  --teal-soft:#e6f6f4;
+  --teal-line:#cfe9e6;
+  --gold:#d9b568;
+  --gold-soft:#fdf6e3;
+  --ink:#172f42;
+  --ink-2:#2c4557;
+  --muted:#6b7f8d;
+  --muted-2:#8fa1ac;
+  --bg:#f4f9f8;
+  --bg-2:#eef5f4;
+  --line:#e2eeec;
+  --line-2:#d5e5e2;
+  --white:#fff;
+  --shadow-sm:0 2px 8px rgba(15,45,68,.05);
+  --shadow:0 10px 30px rgba(15,45,68,.07);
+  --shadow-lg:0 20px 55px rgba(15,45,68,.1);
+  --radius-sm:12px;
+  --radius:16px;
+  --radius-lg:22px;
+  --radius-xl:28px;
+  --radius-full:999px;
+  --font:'Tajawal','Arial',sans-serif;
+}
+
+/* ====== Base ====== */
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--bg);
+  font-family:var(--font);
+  color:var(--ink);
+  line-height:1.75;
+  font-size:15px;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+button,input,select{font-family:inherit;font-size:inherit}
+button{cursor:pointer;border:none;background:none;color:inherit}
+button:disabled{cursor:not-allowed;opacity:.5}
+h1,h2,h3,h4,p{margin:0}
+img{max-width:100%;display:block}
+.shell{max-width:1180px;margin:0 auto;padding:0 24px}
+.hidden{display:none!important}
+
+/* ====== Top Bar ====== */
+.topbar{
+  background:rgba(255,255,255,.94);
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--line);
+  position:sticky;top:0;z-index:50;
+}
+.topinner{
+  height:76px;
+  display:flex;align-items:center;gap:22px;
+}
+.brand{
+  display:flex;gap:12px;align-items:center;cursor:pointer;
+  white-space:nowrap;
+}
+.brandmark{
+  width:46px;height:46px;
+  background:linear-gradient(140deg,var(--navy),var(--navy-3));
+  border-radius:14px;
+  display:grid;place-items:center;
+  color:var(--gold);
+  box-shadow:0 8px 20px rgba(15,45,68,.18);
+}
+.brandmark svg{width:22px;height:22px}
+.brandname{font-size:23px;font-weight:900;line-height:1.1;color:var(--navy)}
+.brandname span{color:var(--teal)}
+.brandsub{font-size:11px;color:var(--muted);font-weight:600;letter-spacing:.3px;margin-top:2px}
+
+/* ====== Nav (Pill style) ====== */
+.nav{display:flex;gap:4px;margin-inline-start:auto;background:var(--bg-2);padding:5px;border-radius:var(--radius-full)}
+.nav button{
+  padding:9px 16px;
+  border-radius:var(--radius-full);
+  color:var(--muted);
+  font-weight:700;
+  font-size:13.5px;
+  display:flex;align-items:center;gap:7px;
+  transition:all .2s ease;
+}
+.nav button svg{width:17px;height:17px}
+.nav button:hover{color:var(--navy)}
+.nav button.active{
+  background:var(--white);
+  color:var(--teal);
+  box-shadow:var(--shadow-sm);
+}
+.headeractions{display:flex;gap:8px;margin-inline-start:12px}
+.outlinebutton{
+  border:1px solid var(--line-2);
+  background:var(--white);
+  color:var(--navy);
+  border-radius:12px;
+  padding:9px 15px;
+  font-weight:700;
+  font-size:13px;
+  display:inline-flex;align-items:center;gap:7px;
+  transition:all .2s;
+}
+.outlinebutton:hover{border-color:var(--teal);color:var(--teal)}
+.outlinebutton svg{width:16px;height:16px}
+
+/* ====== Main ====== */
+.main{padding-bottom:110px}
+
+/* ====== Hero ====== */
+.hero{
+  margin-top:28px;
+  border-radius:var(--radius-xl);
+  overflow:hidden;
+  min-height:380px;
+  background:
+    radial-gradient(circle at 75% 25%, rgba(18,165,160,.4) 0%, transparent 55%),
+    linear-gradient(120deg,#0d2b40 0%,#12525a 100%);
+  display:grid;
+  grid-template-columns:1.15fr .85fr;
+  position:relative;
+  color:#fff;
+  isolation:isolate;
+  box-shadow:var(--shadow-lg);
+}
+.hero::before,.hero::after{
+  content:'';
+  position:absolute;
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:50%;
+  z-index:-1;
+}
+.hero::before{width:480px;height:480px;left:-180px;bottom:-300px}
+.hero::after{width:520px;height:520px;right:-140px;top:-260px}
+.herotext{padding:52px 56px;display:flex;flex-direction:column;justify-content:center}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(255,255,255,.1);
+  color:var(--gold);
+  border:1px solid rgba(255,255,255,.15);
+  border-radius:var(--radius-full);
+  padding:6px 14px;
+  font-size:12.5px;
+  font-weight:800;
+  align-self:flex-start;
+  letter-spacing:.2px;
+}
+.herotext h1{
+  font-size:clamp(34px,4.2vw,52px);
+  line-height:1.2;
+  margin:22px 0 14px;
+  font-weight:900;
+  letter-spacing:-.5px;
+}
+.herotext h1 em{font-style:normal;color:var(--gold)}
+.herotext p{
+  font-size:16px;
+  color:rgba(255,255,255,.82);
+  max-width:460px;
+  margin:0 0 28px;
+  line-height:1.7;
+}
+.primary{
+  background:var(--gold);
+  color:var(--navy);
+  padding:14px 24px;
+  border-radius:14px;
+  font-weight:900;
+  font-size:14.5px;
+  box-shadow:0 10px 28px rgba(217,181,104,.3);
+  display:inline-flex;align-items:center;gap:10px;
+  justify-content:center;
+  align-self:flex-start;
+  transition:all .2s;
+}
+.primary:hover{transform:translateY(-1px);box-shadow:0 14px 32px rgba(217,181,104,.4)}
+.primary svg{width:18px;height:18px}
+.secondary{
+  border:1px solid var(--line-2);
+  background:var(--white);
+  color:var(--navy);
+  padding:12px 20px;
+  border-radius:14px;
+  font-weight:800;
+  font-size:14px;
+  display:inline-flex;gap:8px;align-items:center;justify-content:center;
+  transition:all .2s;
+}
+.secondary:hover{border-color:var(--teal);color:var(--teal)}
+.secondary svg{width:17px;height:17px}
+
+.herofigure{
+  position:relative;
+  display:flex;align-items:flex-end;justify-content:center;
+  padding:28px;
+}
+.herodisc{
+  position:absolute;
+  width:320px;height:320px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(211,249,234,.3),rgba(255,255,255,.02) 70%);
+  left:50%;top:50%;
+  transform:translate(-50%,-50%);
+}
+.photocard{
+  position:relative;
+  width:82%;max-width:290px;height:300px;
+  background:var(--bg-2);
+  border:8px solid rgba(255,255,255,.15);
+  border-radius:150px 150px 28px 28px;
+  overflow:hidden;
+  box-shadow:0 22px 55px rgba(0,0,0,.25);
+}
+.photocard img{width:100%;height:100%;object-fit:cover}
+.floatnote{
+  position:absolute;
+  bottom:32px;right:10px;
+  background:var(--white);
+  border-radius:14px;
+  padding:10px 15px;
+  color:var(--navy);
+  box-shadow:var(--shadow);
+  font-weight:800;font-size:12.5px;
+  display:flex;align-items:center;gap:7px;
+}
+.floatnote::before{content:'✦';color:var(--gold);font-size:16px}
+
+/* ====== Stats ====== */
+.statrow{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px;
+  margin:24px 0 42px;
+}
+.stat{
+  background:var(--white);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:18px 20px;
+  display:flex;align-items:center;gap:14px;
+  transition:all .2s;
+}
+.stat:hover{border-color:var(--teal-line);box-shadow:var(--shadow-sm)}
+.staticon{
+  width:48px;height:48px;
+  border-radius:13px;
+  display:grid;place-items:center;
+  color:var(--teal);
+  background:var(--teal-soft);
+  flex-shrink:0;
+}
+.staticon svg{width:22px;height:22px}
+.stat strong{
+  display:block;
+  font-size:22px;
+  line-height:1.1;
+  color:var(--navy);
+  font-weight:900;
+}
+.stat small{
+  color:var(--muted);
+  font-weight:600;
+  font-size:12.5px;
+  display:block;
+  margin-top:3px;
+}
+
+/* ====== Section Heading ====== */
+.sectionhead{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  margin:36px 0 20px;
+  gap:16px;
+}
+.kicker{
+  color:var(--teal);
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:.6px;
+  text-transform:uppercase;
+  display:block;
+  margin-bottom:6px;
+}
+.sectionhead h2{
+  font-size:26px;
+  line-height:1.3;
+  color:var(--navy);
+  font-weight:900;
+  letter-spacing:-.3px;
+}
+.sectionhead p{
+  margin:6px 0 0;
+  color:var(--muted);
+  font-size:14px;
+}
+
+/* ====== Course Grid ====== */
+.coursegrid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+}
+.course{
+  background:var(--white);
+  border:1px solid var(--line);
+  border-radius:var(--radius-lg);
+  padding:22px;
+  text-align:right;
+  min-height:210px;
+  display:flex;flex-direction:column;
+  align-items:stretch;
+  transition:all .22s ease;
+  position:relative;
+  overflow:hidden;
+}
+.course::after{
+  content:'';
+  position:absolute;
+  bottom:0;right:0;
+  width:0;height:3px;
+  background:var(--teal);
+  transition:width .3s ease;
+}
+.course:hover{
+  transform:translateY(-4px);
+  border-color:var(--teal-line);
+  box-shadow:var(--shadow);
+}
+.course:hover::after{width:100%}
+.coursehead{
+  display:flex;align-items:center;justify-content:space-between;
+}
+.courseicon{
+  width:52px;height:52px;
+  border-radius:15px;
+  display:grid;place-items:center;
+}
+.courseicon svg{width:25px;height:25px}
+.coursecount{
+  font-size:11.5px;
+  font-weight:800;
+  color:var(--muted);
+  background:var(--bg-2);
+  padding:5px 11px;
+  border-radius:var(--radius-full);
+  letter-spacing:.2px;
+}
+.course h3{
+  font-weight:900;
+  font-size:20px;
+  margin:16px 0 4px;
+  color:var(--navy);
+  letter-spacing:-.2px;
+}
+.course p{
+  color:var(--muted);
+  font-size:13px;
+  margin:0 0 auto;
+  line-height:1.6;
+}
+.coursefoot{
+  padding-top:16px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  color:var(--teal);
+  font-weight:800;
+  font-size:13px;
+}
+.coursefoot svg{width:16px;height:16px;transition:transform .2s}
+.course:hover .coursefoot svg{transform:translateX(-4px)}
+
+/* Course colors */
+.teal .courseicon,.sticker.teal{background:var(--teal-soft);color:#078582}
+.navy .courseicon,.sticker.navy{background:#e8edf5;color:#234b70}
+.gold .courseicon,.sticker.gold{background:var(--gold-soft);color:#a8812a}
+.mint .courseicon,.sticker.mint{background:#eaf7e7;color:#448a55}
+.coral .courseicon,.sticker.coral{background:#fff0e8;color:#d37b4f}
+.rose .courseicon,.sticker.rose{background:#ffecee;color:#c85b76}
+.blue .courseicon,.sticker.blue{background:#e9f4ff;color:#2e81b0}
+.lilac .courseicon,.sticker.lilac{background:#f3eefd;color:#7969a9}
+
+/* ====== Featured Strip ====== */
+.featuredstrip{
+  background:linear-gradient(120deg,var(--teal-soft),#f4fbfa);
+  border:1px solid var(--teal-line);
+  border-radius:var(--radius-lg);
+  padding:24px 28px;
+  display:flex;align-items:center;gap:22px;
+  margin-top:28px;
+}
+.featuredstrip .courseicon{
+  width:60px;height:60px;
+  background:var(--white)!important;
+  color:var(--teal)!important;
+  box-shadow:var(--shadow-sm);
+}
+.featuredstrip .courseicon svg{width:28px;height:28px}
+.featuredstrip h3{margin:0;color:var(--navy);font-size:19px;font-weight:900}
+.featuredstrip p{margin:4px 0 0;color:var(--muted);font-size:13px}
+.featuredstrip .secondary{margin-inline-start:auto;flex-shrink:0}
+
+/* ====== Page Head ====== */
+.pagehead{margin:34px 0 26px}
+.crumbs{
+  font-size:13px;
+  color:var(--muted);
+  margin-bottom:12px;
+  display:flex;align-items:center;gap:6px;flex-wrap:wrap;
+}
+.crumbs button{
+  border:none;background:none;
+  color:var(--teal);
+  font-weight:800;
+  padding:2px 0;
+  font-size:13px;
+}
+.crumbs button:hover{text-decoration:underline}
+.pagehead h1{
+  font-weight:900;
+  color:var(--navy);
+  font-size:32px;
+  line-height:1.25;
+  letter-spacing:-.5px;
+}
+.pagehead p{color:var(--muted);margin:8px 0 0;font-size:14.5px}
+.inline{display:inline-flex;align-items:center;gap:14px}
+.inline .sticker{border-radius:16px;padding:13px}
+.inline .sticker svg{width:24px;height:24px}
+
+/* ====== Module Page (lists) ====== */
+.listcard{
+  background:var(--white);
+  border:1px solid var(--line);
+  padding:28px;
+  border-radius:var(--radius-lg);
+  box-shadow:var(--shadow-sm);
+}
+.listcard>p{
+  color:var(--ink-2);
+  margin:14px 0 22px;
+  font-size:14.5px;
+  line-height:1.75;
+}
+.safebadge{
+  background:var(--gold-soft);
+  color:#8c6b1d;
+  border-radius:var(--radius-full);
+  padding:5px 13px;
+  font-size:12px;
+  font-weight:900;
+  display:inline-block;
+  letter-spacing:.2px;
+}
+.itemgrid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
+}
+.item{
+  display:flex;
+  align-items:flex-start;
+  gap:13px;
+  background:var(--bg);
+  padding:14px 16px;
+  border:1px solid var(--line);
+  border-radius:14px;
+  font-size:14px;
+  font-weight:600;
+  color:var(--ink);
+  line-height:1.65;
+  transition:all .2s;
+}
+.item:hover{
+  background:var(--white);
+  border-color:var(--teal-line);
+  box-shadow:var(--shadow-sm);
+}
+.num{
+  width:28px;height:28px;
+  border-radius:9px;
+  background:var(--teal-soft);
+  color:var(--teal);
+  display:grid;place-items:center;
+  font-weight:900;
+  font-size:13px;
+  flex-shrink:0;
+  margin-top:1px;
+}
+.ref{
+  font-size:12.5px;
+  color:#6d8590;
+  background:var(--bg-2);
+  padding:8px 13px;
+  border-radius:11px;
+  display:inline-flex;align-items:center;gap:7px;
+  margin-top:20px;
+  font-weight:600;
+}
+.ref svg{width:15px;height:15px}
+
+.helpbanner{
+  background:linear-gradient(120deg,var(--teal-soft),#eff9f7);
+  padding:16px 20px;
+  border-radius:14px;
+  border:1px solid var(--teal-line);
+  color:#3d6870;
+  font-size:13px;
+  margin-top:20px;
+  display:flex;align-items:flex-start;gap:10px;
+  line-height:1.7;
+}
+.helpbanner svg{width:18px;height:18px;flex-shrink:0;margin-top:2px;color:var(--teal)}
+
+.startsteps{display:flex;justify-content:center;margin-top:24px}
+
+/* ====== Steps Page ====== */
+.stepview{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:22px;
+  align-items:stretch;
+}
+.stepimage{
+  background:linear-gradient(145deg,#eaf6f2,#fdf8e9);
+  border:1px solid var(--line);
+  border-radius:var(--radius-lg);
+  min-height:400px;
+  overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
+  position:relative;
+}
+.stepimage img{
+  height:100%;width:100%;
+  max-height:540px;
+  object-fit:contain;
+  object-position:center;
+}
+.stepimage.placeholder{
+  flex-direction:column;gap:14px;padding:20px;
+}
+.stepimage.placeholder svg{
+  width:72px;height:72px;
+  stroke:#a6c4bc;
+}
+.stepimage.placeholder p{
+  font-size:14px;
+  color:#728e91;
+  text-align:center;
+  line-height:1.6;
+}
+
+.stepinfo{
+  background:var(--white);
+  border:1px solid var(--line);
+  border-radius:var(--radius-lg);
+  padding:28px;
+  display:flex;flex-direction:column;
+  box-shadow:var(--shadow-sm);
+}
+.progresslabel{
+  font-size:12.5px;
+  font-weight:800;
+  color:var(--muted);
+  display:flex;justify-content:space-between;
+  margin-bottom:8px;
+}
+.progresslabel span:last-child{color:var(--navy);font-weight:900}
+.track{
+  background:var(--bg-2);
+  height:8px;
+  border-radius:var(--radius-full);
+  overflow:hidden;
+  margin-bottom:22px;
+}
+.fill{
+  background:linear-gradient(90deg,var(--teal),var(--gold));
+  height:100%;
+  border-radius:var(--radius-full);
+  transition:width .3s ease;
+}
+.smalltag{
+  display:inline-block;
+  align-self:flex-start;
+  border-radius:var(--radius-full);
+  background:var(--teal-soft);
+  color:var(--teal);
+  padding:5px 13px;
+  font-weight:800;
+  font-size:11.5px;
+  letter-spacing:.2px;
+}
+.stepinfo h2{
+  font-size:26px;
+  color:var(--navy);
+  font-weight:900;
+  line-height:1.3;
+  margin:14px 0 10px;
+  letter-spacing:-.3px;
+}
+.stepinfo .desc{
+  margin:0;
+  color:var(--ink-2);
+  font-size:15px;
+  line-height:1.75;
+}
+.chant{
+  background:linear-gradient(135deg,var(--bg),var(--gold-soft));
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:16px 18px;
+  margin:20px 0 12px;
+}
+.chant small{
+  display:block;
+  color:var(--muted);
+  font-weight:800;
+  font-size:11.5px;
+  letter-spacing:.3px;
+  margin-bottom:4px;
+}
+.chant strong{
+  display:block;
+  color:var(--navy);
+  font-size:17px;
+  font-weight:800;
+  line-height:1.5;
+}
+.underchant{
+  font-size:12px;
+  color:var(--muted-2);
+  margin:0 0 15px;
+  display:block;
+}
+.soundbutton{
+  background:var(--teal-soft);
+  color:var(--teal);
+  padding:9px 15px;
+  border-radius:11px;
+  font-weight:800;
+  font-size:13px;
+  margin-top:12px;
+  display:inline-flex;align-items:center;gap:7px;
+  transition:all .2s;
+}
+.soundbutton:hover{background:var(--teal);color:var(--white)}
+.soundbutton svg{width:16px;height:16px}
+.mutedbutton{
+  background:var(--bg-2);
+  color:var(--muted);
+  padding:9px 15px;
+  border-radius:11px;
+  font-weight:700;
+  font-size:13px;
+  margin-top:12px;
+  display:inline-flex;align-items:center;gap:7px;
+}
+.mutedbutton svg{width:16px;height:16px}
+.sourcenote{
+  background:var(--gold-soft);
+  padding:14px 16px;
+  border:1px solid #f2e4bf;
+  border-radius:13px;
+  color:#6e5825;
+  font-size:13px;
+  line-height:1.75;
+  margin-top:auto;
+}
+.sourcenote b{color:#5a4a1d}
+.actionrow{
+  display:flex;
+  gap:11px;
+  justify-content:space-between;
+  padding-top:20px;
+}
+.actionrow button{min-width:46%}
+
+/* ====== Quiz ====== */
+.quizcard{
+  max-width:780px;
+  margin:0 auto;
+  background:var(--white);
+  border:1px solid var(--line);
+  border-radius:var(--radius-lg);
+  padding:32px;
+  box-shadow:var(--shadow);
+}
+.quizheader{
+  display:flex;
+  justify-content:space-between;
+  color:var(--muted);
+  font-size:13px;
+  font-weight:800;
+  margin-bottom:14px;
+}
+.quizheader span:last-child{color:var(--teal);font-weight:900}
+.quizcard h2{
+  font-size:22px;
+  margin:20px 0;
+  color:var(--navy);
+  line-height:1.55;
+  font-weight:800;
+  letter-spacing:-.2px;
+}
+.options{display:grid;gap:11px;margin-top:8px}
+.option{
+  border:1.5px solid var(--line);
+  padding:15px 17px;
+  background:var(--bg);
+  border-radius:14px;
+  color:var(--ink);
+  text-align:right;
+  font-weight:700;
+  font-size:14.5px;
+  display:flex;
+  align-items:center;
+  gap:13px;
+  transition:all .18s;
+  line-height:1.5;
+}
+.option:hover:not(:disabled){
+  border-color:var(--teal-line);
+  background:var(--white);
+  transform:translateX(-2px);
+}
+.option span{
+  display:grid;
+  place-items:center;
+  width:30px;height:30px;
+  background:var(--white);
+  border:1px solid var(--line);
+  border-radius:9px;
+  color:var(--teal);
+  font-weight:900;
+  font-size:13px;
+  flex-shrink:0;
+  transition:all .2s;
+}
+.option.selected{
+  border-color:var(--teal);
+  background:var(--white);
+}
+.option.selected span{
+  background:var(--teal);
+  color:var(--white);
+  border-color:var(--teal);
+}
+.option.correct{
+  border-color:#3e9e78;
+  background:#edfaf3;
+}
+.option.correct span{
+  background:#3e9e78;
+  color:var(--white);
+  border-color:#3e9e78;
+}
+.option.wrong{
+  border-color:#d97777;
+  background:#fff2f2;
+}
+.option.wrong span{
+  background:#d97777;
+  color:var(--white);
+  border-color:#d97777;
+}
+
+.feedback{
+  background:linear-gradient(135deg,#f3faf7,#edf7f3);
+  padding:18px;
+  border-radius:14px;
+  margin-top:18px;
+  border:1px solid #dcefe5;
+}
+.feedback strong{
+  display:block;
+  font-size:15px;
+  margin-bottom:4px;
+}
+.feedback p{
+  margin:6px 0;
+  font-size:13.5px;
+  color:var(--ink-2);
+  line-height:1.65;
+}
+.feedback small{
+  color:var(--muted);
+  font-weight:700;
+  font-size:12px;
+  display:block;
+  margin-top:10px;
+}
+
+.quizstats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin-top:22px;
+}
+.quizstats>div{
+  background:var(--bg);
+  border:1px solid var(--line);
+  padding:18px 14px;
+  border-radius:14px;
+  text-align:center;
+}
+.quizstats b{
+  font-size:26px;
+  color:var(--navy);
+  display:block;
+  font-weight:900;
+  line-height:1.2;
+}
+.quizstats small{
+  color:var(--muted);
+  font-weight:700;
+  font-size:12px;
+  display:block;
+  margin-top:4px;
+}
+
+/* ====== Footer ====== */
+.footer{
+  border-top:1px solid var(--line);
+  padding:26px 0 100px;
+  color:var(--muted-2);
+  font-size:12.5px;
+  text-align:center;
+  line-height:1.7;
+}
+
+/* ====== Bottom Nav (mobile) ====== */
+.bottomnav{display:none}
+
+/* ====== Modal ====== */
+.modaloverlay{
+  position:fixed;inset:0;
+  background:rgba(10,38,51,.65);
+  backdrop-filter:blur(4px);
+  z-index:60;
+  display:flex;justify-content:center;align-items:center;
+  padding:16px;
+}
+.modal{
+  background:var(--white);
+  border-radius:var(--radius-lg);
+  padding:28px;
+  width:min(500px,100%);
+  max-height:94vh;
+  overflow:auto;
+  box-shadow:var(--shadow-lg);
+}
+.modal h2{margin:0;color:var(--navy);font-size:20px;font-weight:900}
+.modal p{font-size:13px;color:var(--muted);margin:10px 0 0;line-height:1.7}
+.modal label{
+  display:block;
+  font-weight:800;
+  font-size:13.5px;
+  margin:18px 0 8px;
+  color:var(--navy);
+}
+.modal select,.modal input[type=file]{
+  width:100%;
+  border:1px solid var(--line-2);
+  border-radius:11px;
+  background:var(--bg);
+  padding:11px 13px;
+  color:var(--ink);
+  font-size:13.5px;
+}
+.modal select:focus,.modal input[type=file]:focus{
+  outline:none;
+  border-color:var(--teal);
+  background:var(--white);
+}
+.modalbuttons{
+  display:flex;gap:10px;
+  margin-top:24px;
+  flex-wrap:wrap;
+}
+.modalbuttons button{flex:1}
+
+/* ====== Toast ====== */
+.toast{
+  position:fixed;
+  bottom:28px;
+  left:50%;
+  transform:translateX(-50%);
+  border-radius:13px;
+  background:var(--navy);
+  color:var(--white);
+  padding:14px 22px;
+  z-index:70;
+  box-shadow:var(--shadow-lg);
+  font-weight:700;
+  font-size:13.5px;
+  max-width:92vw;
+  text-align:center;
+  animation:toastIn .3s ease;
+}
+@keyframes toastIn{
+  from{opacity:0;transform:translate(-50%,20px)}
+  to{opacity:1;transform:translate(-50%,0)}
+}
+
+/* ====== Responsive ====== */
+@media(max-width:900px){
+  .nav{display:none}
+  .topinner{height:68px}
+  .headeractions{margin-inline-start:auto}
+  .hero{grid-template-columns:1fr .7fr;min-height:340px}
+  .herotext{padding:38px 32px}
+  .photocard{height:240px}
+  .statrow{grid-template-columns:repeat(2,1fr)}
+  .coursegrid{grid-template-columns:repeat(2,1fr)}
+  .stepview{grid-template-columns:1fr 1fr}
+  .stepinfo{padding:22px}
+  .stepimage{min-height:380px}
+
+  .bottomnav{
+    display:flex;
+    position:fixed;
+    bottom:0;left:0;right:0;
+    background:rgba(255,255,255,.96);
+    backdrop-filter:blur(20px);
+    border-top:1px solid var(--line);
+    z-index:40;
+    justify-content:space-around;
+    padding:8px 8px max(10px,env(safe-area-inset-bottom));
+  }
+  .bottomnav button{
+    border:none;background:none;
+    color:var(--muted);
+    font-size:10.5px;
+    font-weight:800;
+    display:flex;align-items:center;flex-direction:column;
+    gap:4px;
+    padding:6px 12px;
+    border-radius:12px;
+    transition:all .2s;
+  }
+  .bottomnav button.active{
+    color:var(--teal);
+    background:var(--teal-soft);
+  }
+  .bottomnav svg{height:21px;width:21px}
+}
+
+@media(max-width:640px){
+  body{font-size:14.5px}
+  .shell{padding:0 16px}
+  .topinner{gap:8px}
+  .brandmark{width:40px;height:40px;border-radius:12px}
+  .brandmark svg{width:19px;height:19px}
+  .brandname{font-size:21px}
+  .brandsub{font-size:10px}
+  .outlinebutton{font-size:11.5px;padding:8px 11px}
+  .outlinebutton span{display:none}
+  .outlinebutton svg{width:18px;height:18px}
+
+  .hero{
+    margin-top:18px;
+    grid-template-columns:1fr;
+    min-height:unset;
+    border-radius:var(--radius-lg);
+  }
+  .herotext{padding:30px 26px 0}
+  .herotext h1{font-size:36px;margin-top:14px}
+  .herotext p{font-size:14px;margin-bottom:20px}
+  .herofigure{
+    padding:8px 24px 24px;
+    justify-content:flex-end;
+    height:190px;
+  }
+  .photocard{
+    height:165px;width:165px;
+    border-radius:90px 90px 20px 20px;
+    margin-left:34px;
+  }
+  .floatnote{
+    bottom:22px;right:auto;left:28px;
+    font-size:10.5px;padding:8px 11px;
+  }
+  .herodisc{height:190px;width:190px;top:53%;left:72%}
+
+  .statrow{margin:18px 0 28px;gap:10px}
+  .stat{padding:13px 12px;gap:10px;border-radius:14px}
+  .staticon{height:38px;width:38px;border-radius:11px}
+  .staticon svg{width:18px;height:18px}
+  .stat strong{font-size:19px}
+  .stat small{font-size:11px}
+
+  .sectionhead{margin:28px 0 16px}
+  .sectionhead h2{font-size:22px}
+  .sectionhead p{font-size:12.5px}
+  .kicker{font-size:11px}
+
+  .coursegrid{grid-template-columns:repeat(2,1fr);gap:11px}
+  .course{border-radius:16px;padding:15px;min-height:175px}
+  .courseicon{height:42px;width:42px;border-radius:12px}
+  .courseicon svg{width:21px;height:21px}
+  .coursecount{font-size:10px;padding:3px 8px}
+  .course h3{font-size:16.5px;margin-top:12px}
+  .course p{font-size:11.5px;line-height:1.5}
+  .coursefoot{font-size:11px;padding-top:10px}
+
+  .featuredstrip{padding:16px 18px;gap:13px;border-radius:16px}
+  .featuredstrip .courseicon{width:46px;height:46px}
+  .featuredstrip .courseicon svg{width:22px;height:22px}
+  .featuredstrip h3{font-size:15.5px}
+  .featuredstrip p{font-size:11px}
+  .featuredstrip .secondary{font-size:11px;padding:9px 12px}
+
+  .pagehead{margin:24px 0 16px}
+  .pagehead h1{font-size:25px}
+  .pagehead p{font-size:13px}
+
+  .stepview{grid-template-columns:1fr;gap:14px}
+  .stepimage{min-height:230px;max-height:270px}
+  .stepimage img{max-height:270px;object-fit:contain}
+  .stepinfo{padding:22px;border-radius:18px}
+  .stepinfo h2{font-size:22px}
+  .stepinfo .desc{font-size:14px}
+  .chant strong{font-size:15.5px}
+  .stepimage.placeholder{height:250px}
+
+  .listcard{padding:18px;border-radius:18px}
+  .itemgrid{grid-template-columns:1fr;gap:9px}
+  .item{font-size:13px;padding:12px 14px}
+  .num{width:26px;height:26px;font-size:12px}
+
+  .quizcard{padding:20px;border-radius:18px}
+  .quizcard h2{font-size:18.5px}
+  .option{font-size:13px;padding:13px}
+  .option span{width:27px;height:27px;font-size:12px}
+
+  .footer{padding-bottom:105px;font-size:11.5px}
+  .toast{bottom:90px}
+  .actionrow button{min-width:0;flex:1}
+
+  .helpbanner{font-size:12px;padding:14px 16px}
+  .ref{font-size:11.5px;padding:7px 11px}
+}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<div id="modalRoot"></div>
+
+<script>
+/* ====== DATA (kept intact) ====== */
+window.SALATI_DATA = /*__DATA_START__*/ {"modules":[{"id":"conditions","name":"شروط الصلاة","sub":"ما يجب تحققه قبل الصلاة","count":"٦ شروط","color":"teal","icon":"shield","src":"ص ٢٣٢–٢٣٩","items":["الطهارة من الحدث بالوضوء أو الغسل","اجتناب النجاسة","دخول الوقت","ستر العورة","استقبال القبلة","النية"],"intro":"تعرّف على شروط صحة الصلاة الستة كما وردت في الكتاب."},{"id":"pillars","name":"أركان الصلاة","sub":"أجزاء لا تصح الصلاة بتركها","count":"١٤ ركنًا","color":"navy","icon":"layers","src":"ص ٢٤٠–٢٤١","items":["القيام في صلاة الفرض مع القدرة","تكبيرة الإحرام","قراءة الفاتحة","الركوع","الرفع من الركوع","الاعتدال بعد الرفع من الركوع","السجود على الأعضاء السبعة","الاعتدال من السجود","الجلسة بين السجدتين","الجلوس للتشهد الأخير","قراءة التشهد الأخير","التسليم","الطمأنينة في جميع الأركان","الترتيب بين الأركان"],"intro":"يذكر المرجع أربعة عشر ركنًا ويبيّن حكم ترك الركن سهوًا."},{"id":"obligations","name":"واجبات الصلاة","sub":"أقوال وأفعال واجبة في الصلاة","count":"٨ واجبات","color":"gold","icon":"check","src":"ص ٢٤٢–٢٤٤","items":["جميع التكبيرات غير تكبيرة الإحرام","قول «سبحان ربي العظيم» في الركوع","قول «سمع الله لمن حمده» عند الرفع من الركوع للإمام والمنفرد","قول «ربنا ولك الحمد» في الاعتدال من الركوع","قول «سبحان ربي الأعلى» في السجود","قول «رب اغفر لي» بين السجدتين","التشهد الأول والجلوس له","الصلاة على النبي ﷺ في التشهد الأخير"],"intro":"تعرّف على الواجبات الثمانية، وكيف تختلف عن الأركان عند السهو."},{"id":"sunnah","name":"سنن الصلاة","sub":"سنن قولية وسنن فعلية","count":"١٤ مثالًا","color":"mint","icon":"sparkles","src":"ص ١٦٢–١٦٣","items":["دعاء الاستفتاح","الاستعاذة قبل قراءة الفاتحة","البسملة قبل القراءة","ما زاد على الواحدة في تسبيح الركوع والسجود","ما زاد على الواحدة من قول «رب اغفر لي» بين السجدتين","ما زاد على قول «ربنا ولك الحمد» بعد الركوع","القراءة بعد الفاتحة وفق التفصيل الوارد في المرجع","رفع اليدين حذو المنكبين أو الأذنين في أربعة مواضع","وضع اليد اليمنى على اليسرى على الصدر أثناء القيام","النظر إلى موضع السجود","مجافاة العضدين عن الجنبين أثناء السجود","مجافاة البطن عن الفخذين أثناء السجود","الافتراش في جلسات الصلاة وفق التفصيل الوارد","التورك في التشهد الأخير من الصلاة الثلاثية أو الرباعية"],"intro":"السنن في المرجع قسمان: قولية وفعلية، وتركها لا يُبطل الصلاة."},{"id":"disliked","name":"مكروهات الصلاة","sub":"أمور يُشرع تركها أثناء الصلاة","count":"٨ مكروهات","color":"coral","icon":"alert","src":"ص ١٦٤–١٦٥","items":["الالتفات لغير حاجة","رفع البصر إلى السماء","تغميض العينين لغير حاجة","افتراش الذراعين في السجود","التلثم على الفم والأنف لغير حاجة","الصلاة حال مدافعة البول أو الغائط أو بحضرة طعام يشتهيه","العبث بما ينافي الخشوع والاطمئنان","وضع اليدين في السجود على هيئة القبضة أو وضع الأصابع فقط"],"intro":"يوضح المرجع أن فعل المكروه يُنقص ثواب الصلاة، ولا يُبطلها."},{"id":"invalid","name":"مبطلات الصلاة","sub":"ما يجب الحذر منه أثناء الصلاة","count":"٨ مبطلات","color":"rose","icon":"x","src":"ص ١٦٥–١٦٦","items":["الأكل والشرب","الكلام الخارج عن الصلاة","الضحك","تعمد ترك أحد أركان الصلاة أو واجباتها","تعمد زيادة ركن أو ركعة","تعمد السلام قبل الإمام","الحركة الكثيرة المتوالية من غير جنس الصلاة لغير حاجة","الإتيان بما ينافي أحد شروط الصلاة، وفق التفصيل الوارد في المرجع"],"intro":"تعرف على مبطلات الصلاة كما صنفها المرجع، مع الانتباه إلى الشروط والتفصيلات."},{"id":"sahw","name":"سجود السهو","sub":"حالات الزيادة والنقص والشك","count":"٣ أسباب","color":"blue","icon":"help","src":"ص ١٦٨–١٧٥","items":["الزيادة في الصلاة سهوًا","النقص في الصلاة سهوًا","الشك في الصلاة"],"intro":"يعرض المرجع أمثلة تطبيقية للزيادة والنقص والشك، ويبيّن أحكام سجود السهو وتوقيت السجود بحسب الحالة."},{"id":"times","name":"مواقيت الصلاة","sub":"بداية الوقت ونهايته","count":"٥ صلوات","color":"lilac","icon":"clock","src":"ص ٢٣٥–٢٣٧","items":["الفجر","الظهر","العصر","المغرب","العشاء"],"intro":"يعرض المرجع العلامات الشرعية لأوقات الصلوات، وليس مواقيت تقويم يومية بحسب الموقع."},{"id":"howto","name":"صفة الصلاة","sub":"التعلّم بالصور، خطوة بخطوة","count":"١١ خطوة","color":"teal","icon":"play","src":"ص ٢٣٢–٢٤٣، ١٦٢–١٦٣","items":[],"intro":"تسلسل تعليمي مصور يجمع الأركان والواجبات الواردة بالمرجع."}],"steps":[{"title":"التهيؤ للصلاة","tag":"شروط الصلاة","description":"قبل البدء، تحقّق من الطهارة، واجتناب النجاسة، ودخول الوقت، وستر العورة، واستقبال القبلة، والنية.","say":"","page":"ص ٢٣٢–٢٣٩","img":"","note":"النية محلها القلب، كما نص المرجع."},{"title":"تكبيرة الإحرام","tag":"ركن","description":"ابدأ الصلاة بتكبيرة الإحرام. رفع اليدين عند تكبيرة الإحرام من السنن الفعلية المذكورة في المرجع.","say":"الله أكبر","page":"ص ٢٤٠، ١٦٢","img":"takbir","note":"التكبير ركن، ورفع اليدين سنة."},{"title":"القيام وقراءة الفاتحة","tag":"ركن","description":"القيام في صلاة الفرض مع القدرة ركن، وقراءة الفاتحة ركن من أركان الصلاة.","say":"قراءة سورة الفاتحة","page":"ص ٢٤٠","img":"qiyam","note":"النظر إلى موضع السجود ووضع اليد اليمنى على اليسرى من السنن الفعلية."},{"title":"الركوع","tag":"ركن + واجب","description":"اركع مع الطمأنينة، ومن واجبات الصلاة قول التسبيح في الركوع.","say":"سبحان ربي العظيم","page":"ص ٢٤٠، ٢٤٢","img":"ruku","note":"الركوع ركن، والتسبيح المذكور فيه واجب."},{"title":"الرفع من الركوع والاعتدال","tag":"ركن + واجب","description":"ارفع من الركوع واعتدل قائمًا مع الطمأنينة.","say":"سمع الله لمن حمده — للإمام والمنفرد. ربنا ولك الحمد","page":"ص ٢٤٠، ٢٤٢","img":"raised","note":"الرفع والاعتدال ركنان، والأذكار مرتبطة بحال المصلي حسب المرجع."},{"title":"السجود الأول","tag":"ركن + واجب","description":"اسجد على الأعضاء السبعة مع الطمأنينة، وقل التسبيح الوارد في السجود.","say":"سبحان ربي الأعلى","page":"ص ٢٤٠، ٢٤٢","img":"sujud","note":"السجود على الأعضاء السبعة ركن."},{"title":"الجلوس بين السجدتين","tag":"ركن + واجب","description":"ارفع من السجود واجلس بين السجدتين مطمئنًا، وقل الذكر الوارد.","say":"رب اغفر لي","page":"ص ٢٤١–٢٤٢","img":"jalsa","note":"الجلسة بين السجدتين ركن، والذكر المذكور واجب."},{"title":"السجدة الثانية","tag":"ركن + واجب","description":"اسجد السجدة الثانية مع الطمأنينة وراعِ السجود على الأعضاء السبعة.","say":"سبحان ربي الأعلى","page":"ص ٢٤٠–٢٤٢","img":"sujud","note":"يُتبع ذلك القيام للركعة التالية عند وجود ركعات باقية."},{"title":"الركعة التالية والتشهد الأول","tag":"واجب عند موضعه","description":"أكمل الركعات بحسب الصلاة، ويأتي التشهد الأول والجلوس له في موضعه بحسب عدد الركعات.","say":"التشهد الأول","page":"ص ٢٤٢","img":"sitting","note":"تُكرر حركات الركعة وفق ترتيب الأركان."},{"title":"التشهد الأخير","tag":"ركن + واجب","description":"اجلس للتشهد الأخير واقرأ التشهد، ثم الصلاة على النبي ﷺ، كما فصّل المرجع.","say":"التشهد الأخير والصلاة على النبي ﷺ","page":"ص ٢٤١–٢٤٢","img":"tashahhud","note":"الجلوس للتشهد الأخير وقراءته ركنان، والصلاة على النبي ﷺ فيه واجب بحسب المرجع."},{"title":"التسليم","tag":"ركن","description":"اختم الصلاة بالتسليم بعد إتمام الأركان والواجبات والطمأنينة.","say":"التسليم","page":"ص ٢٤١","img":"tasleem","note":"التسليم من الأركان المذكورة في الكتاب."}],"questions":[{"q":"كم عدد شروط صحة الصلاة التي يذكرها المرجع؟","opts":["خمسة","ستة","سبعة","ثمانية"],"right":1,"why":"يذكر درس شروط الصلاة ستة شروط لصحتها.","page":"ص ٢٣٢"},{"q":"أيّ العناصر التالية عُدَّ ركنًا من أركان الصلاة؟","opts":["دعاء الاستفتاح","رفع اليدين عند الركوع","تكبيرة الإحرام","البسملة قبل القراءة"],"right":2,"why":"تكبيرة الإحرام من الأركان؛ أما الخيارات الأخرى فمذكورة ضمن السنن في المرجع.","page":"ص ٢٤٠، ١٦٢"},{"q":"«سبحان ربي العظيم» في الركوع تصنَّف في المرجع على أنها:","opts":["شرط","ركن","واجب","مكروه"],"right":2,"why":"الركوع ركن، أما قول «سبحان ربي العظيم» فيه فهو واجب.","page":"ص ٢٤٠–٢٤٢"},{"q":"أيّ مما يلي من سنن الصلاة الفعلية؟","opts":["الركوع","الطمأنينة","تكبيرة الإحرام","النظر إلى موضع السجود"],"right":3,"why":"ورد النظر إلى موضع السجود ضمن السنن الفعلية.","page":"ص ١٦٢"},{"q":"ما الحالة التي تُعد من مكروهات الصلاة حسب المرجع؟","opts":["قراءة الفاتحة","رفع البصر إلى السماء","التشهد الأخير","القيام في الفرض مع القدرة"],"right":1,"why":"يذكر المرجع رفع البصر إلى السماء ضمن المكروهات.","page":"ص ١٦٤"},{"q":"ما الأسباب الرئيسة لسجود السهو التي يعرضها المرجع؟","opts":["الزيادة والنقص والشك","الوضوء والأذان والإقامة","الركوع والسجود والقيام","القراءة والذكر والدعاء"],"right":0,"why":"يفصل درس سجود السهو في الزيادة والنقص والشك.","page":"ص ١٦٨–١٧١"},{"q":"إذا ترك المصلّي واجبًا سهوًا، فما الذي يذكره المرجع؟","opts":["لا يسجد للسهو مطلقًا","لا يرجع إليه ويسجد للسهو في آخر صلاته","تبطل الصلاة مطلقًا","يكتفي بالدعاء بعد الصلاة"],"right":1,"why":"يوضح درس الفرق بين الأركان والواجبات حكم ترك الواجب سهوًا.","page":"ص ٢٤٣"},{"q":"كم عدد أركان الصلاة المذكورة في هذا المرجع؟","opts":["ثمانية","اثنا عشر","أربعة عشر","ستة عشر"],"right":2,"why":"يصرح المرجع بأن أركان الصلاة أربعة عشر ركنًا.","page":"ص ٢٤٠–٢٤١"}],"assets":{"takbir":"__TAKBIR__","qiyam":"__QIYAM__","ruku":"__RUKU__","raised":"__RAISED__","sujud":"__SUJUD__","jalsa":"__JALSA__","rise_sujud":"__RISE_SUJUD__","tashahhud":"__TASHAHHUD__","sitting":"__SITTING__","tasleem":"__TASLEEM__"}} /*__DATA_END__*/;
+
+/* ====== Helpers ====== */
+const DATA = window.SALATI_DATA;
+const $ = (s, p=document) => p.querySelector(s);
+const $$ = (s, p=document) => Array.from(p.querySelectorAll(s));
+const safeGet = k => { try { return localStorage.getItem(k); } catch(e) { return null; } };
+const safeSet = (k,v) => { try { localStorage.setItem(k,v); } catch(e) {} };
+
+let state = {
+  page: 'home',
+  step: Math.max(0, Math.min(DATA.steps.length-1, Number(safeGet('salati_step')||0))),
+  module: 'conditions',
+  quiz: 0,
+  selected: null,
+  score: 0,
+  answered: false,
+  completed: false,
+  media: {},
+  db: null
+};
+
+/* ====== Icons ====== */
+const icons = {
+  home: '<path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/>',
+  book: '<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>',
+  layers: '<path d="m12 2 9 5-9 5-9-5 9-5z"/><path d="m3 12 9 5 9-5M3 17l9 5 9-5"/>',
+  shield: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/>',
+  check: '<path d="M20 6 9 17l-5-5"/>',
+  sparkles: '<path d="m12 3 1.5 5.5L19 10l-5.5 1.5L12 17l-1.5-5.5L5 10l5.5-1.5L12 3zM4 16l.8 2.2L7 19l-2.2.8L4 22l-.8-2.2L1 19l2.2-.8L4 16zM20 2l.6 1.4L22 4l-1.4.6L20 6l-.6-1.4L18 4l1.4-.6L20 2z"/>',
+  alert: '<path d="m12 3 10 18H2L12 3z"/><path d="M12 9v5m0 3h.01"/>',
+  x: '<circle cx="12" cy="12" r="9"/><path d="m9 9 6 6m0-6-6 6"/>',
+  help: '<circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 0 1 5 0c0 2-2.5 2.5-2.5 4.5M12 17h.01"/>',
+  clock: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l4 2"/>',
+  play: '<path d="m8 5 11 7-11 7V5z"/>',
+  arrow: '<path d="m15 18-6-6 6-6"/>',
+  volume: '<path d="M11 5 6 9H3v6h3l5 4V5zM15 9a4 4 0 0 1 0 6m3-9a8 8 0 0 1 0 12"/>',
+  upload: '<path d="M12 16V3m-5 5 5-5 5 5"/><path d="M4 16v4h16v-4"/>',
+  image: '<rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/>',
+  info: '<circle cx="12" cy="12" r="9"/><path d="M12 10v7m0-10h.01"/>',
+  rotate: '<path d="M3 11a9 9 0 1 1 3 7"/><path d="M3 4v7h7"/>',
+  award: '<circle cx="12" cy="8" r="5"/><path d="m9 12-2 10 5-3 5 3-2-10"/>'
+};
+const I = k => `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${icons[k]||icons.book}</svg>`;
+
+/* ====== Router ====== */
+function changePage(p, arg) {
+  state.page = p;
+  if (arg) state.module = arg;
+  window.scrollTo({top:0, behavior:'instant'});
+  render();
+}
+
+/* ====== Nav ====== */
+function nav() {
+  const tabs = [
+    ['home','الرئيسية','home'],
+    ['steps','صفة الصلاة','play'],
+    ['courses','الدروس','book'],
+    ['quiz','اختبر نفسك','check']
+  ];
+  return `<header class="topbar"><div class="shell topinner">
+    <div class="brand" onclick="changePage('home')">
+      <span class="brandmark">${I('book')}</span>
+      <div>
+        <div class="brandname">صلاتي <span>.</span></div>
+        <div class="brandsub">تعلّم وأتقن</div>
+      </div>
+    </div>
+    <nav class="nav">${tabs.map(([p,n,ic]) =>
+      `<button class="${state.page===p?'active':''}" onclick="changePage('${p}')">${I(ic)} ${n}</button>`
+    ).join('')}</nav>
+    <div class="headeractions">
+      <button class="outlinebutton" onclick="openMedia()">${I('upload')}<span>الوسائط</span></button>
+    </div>
+  </div></header>`;
+}
+
+function bottomNav() {
+  const tabs = [
+    ['home','الرئيسية','home'],
+    ['steps','الخطوات','play'],
+    ['courses','الدروس','book'],
+    ['quiz','الاختبار','check']
+  ];
+  return `<div class="bottomnav">${tabs.map(([p,n,ic]) =>
+    `<button class="${state.page===p?'active':''}" onclick="changePage('${p}')">${I(ic)}<span>${n}</span></button>`
+  ).join('')}</div>`;
+}
+
+/* ====== Home ====== */
+function home() {
+  const main = DATA.modules.filter(x => x.id !== 'howto');
+  const st = DATA.steps[state.step];
+
+  return `
+  <section class="hero">
+    <div class="herotext">
+      <div class="eyebrow">✦ تعلّم الصلاة بوضوح وثقة</div>
+      <h1>صلاتي.. <em>تعلّم وأتقن</em></h1>
+      <p>من شروط الصلاة إلى التسليم؛ دروس من المرجع، وصور حقيقية، وتطبيقات تفاعلية تعزز الفهم.</p>
+      <button class="primary" onclick="changePage('steps')">${I('play')} ابدأ تعلّم الصلاة</button>
+    </div>
+    <div class="herofigure">
+      <div class="herodisc"></div>
+      <div class="photocard"><img alt="صورة واقعية لتكبيرة الإحرام من المرجع" src="${DATA.assets.takbir}"></div>
+      <div class="floatnote">محتوى مبني على مرجعك</div>
+    </div>
+  </section>
+
+  <div class="statrow">
+    ${[
+      ['٦','شروط الصلاة','shield'],
+      ['١٤','أركان الصلاة','layers'],
+      ['٨','واجبات الصلاة','check'],
+      ['٩','أقسام تعليمية','book']
+    ].map(x => `<div class="stat"><span class="staticon">${I(x[2])}</span><div><strong>${x[0]}</strong><small>${x[1]}</small></div></div>`).join('')}
+  </div>
+
+  <div class="sectionhead">
+    <div>
+      <span class="kicker">مسارات التعلّم</span>
+      <h2>تعلّم كل ما يخص الصلاة</h2>
+      <p>اختر موضوعًا وابدأ التعلّم بطريقة سهلة ومنظمة.</p>
+    </div>
+  </div>
+
+  <div class="coursegrid">
+    ${main.map(courseCard).join('')}
+  </div>
+
+  <div class="featuredstrip">
+    <div class="courseicon">${I('play')}</div>
+    <div>
+      <h3>أكمل من حيث توقفت</h3>
+      <p>الخطوة ${state.step+1} من ${DATA.steps.length} · ${st.title}</p>
+    </div>
+    <button class="secondary" onclick="changePage('steps')">متابعة ${I('arrow')}</button>
+  </div>`;
+}
+
+function courseCard(m) {
+  const link = m.id === 'howto' ? "changePage('steps')" : `changePage('module','${m.id}')`;
+  return `<button class="course ${m.color}" onclick="${link}">
+    <div class="coursehead">
+      <span class="courseicon">${I(m.icon)}</span>
+      <span class="coursecount">${m.count}</span>
+    </div>
+    <h3>${m.name}</h3>
+    <p>${m.sub}</p>
+    <div class="coursefoot"><span>استكشف الدرس</span>${I('arrow')}</div>
+  </button>`;
+}
+
+/* ====== Courses ====== */
+function courses() {
+  return `<div class="pagehead">
+    <div class="crumbs"><button onclick="changePage('home')">الرئيسية</button> / الدروس</div>
+    <h1>المكتبة التعليمية</h1>
+    <p>جميع دروس الصلاة بحسب المرجعين المرفقين.</p>
+  </div>
+  <div class="coursegrid">${DATA.modules.map(courseCard).join('')}</div>`;
+}
+
+/* ====== Module page ====== */
+function modulePage() {
+  const m = DATA.modules.find(x => x.id === state.module) || DATA.modules[0];
+  return `<div class="pagehead">
+    <div class="crumbs">
+      <button onclick="changePage('home')">الرئيسية</button> /
+      <button onclick="changePage('courses')">الدروس</button> /
+      ${m.name}
+    </div>
+    <div class="inline">
+      <span class="sticker ${m.color}">${I(m.icon)}</span>
+      <div><h1>${m.name}</h1><p>${m.sub}</p></div>
+    </div>
+  </div>
+  <section class="listcard">
+    <span class="safebadge">${m.count}</span>
+    <p>${m.intro}</p>
+    <div class="itemgrid">
+      ${m.items.map((n,i) => `<div class="item"><span class="num">${i+1}</span><span>${n}</span></div>`).join('')}
+    </div>
+    <div class="ref">${I('book')} المرجع المطبوع: ${m.src}</div>
+  </section>
+  <div class="helpbanner">
+    ${I('info')}
+    <div>هذه نسخة تعلم أولية. التفاصيل الفقهية والمواقف العملية في الكتاب أعمق من هذه الملخصات؛ لا يُبنى الحكم على الملخص وحده، ولا سيما حالات سجود السهو.</div>
+  </div>
+  <div class="startsteps">
+    <button class="secondary" onclick="changePage('quiz')">${I('check')} انتقل إلى الاختبار</button>
+  </div>`;
+}
+
+/* ====== Steps ====== */
+function getPicture(k, n) {
+  return state.media['imgStep_'+n] || state.media['img_'+k] || DATA.assets[k] || '';
+}
+
+function stepsPage() {
+  const s = DATA.steps[state.step];
+  const photo = getPicture(s.img, state.step);
+  const audio = state.media['audio_'+state.step];
+  return `<div class="pagehead">
+    <div class="crumbs"><button onclick="changePage('home')">الرئيسية</button> / صفة الصلاة</div>
+    <h1>تعلّم الصلاة خطوة بخطوة</h1>
+    <p>شرح مصوّر مستند إلى المرجع المرفق، مع إمكان إضافة صوت بشري معتمد.</p>
+  </div>
+  <div class="stepview">
+    <div class="stepimage ${photo?'':'placeholder'}">
+      ${photo ? `<img src="${photo}" alt="صورة توضيحية من المرجع: ${s.title}">`
+              : `${I('image')}<p>لم تُرفق صورة معتمدة لهذه الخطوة بعد.<br>يمكن إضافتها من «الوسائط».</p>`}
+    </div>
+    <div class="stepinfo">
+      <div class="progresslabel"><span>رحلة التعلّم</span><span>الخطوة ${state.step+1} من ${DATA.steps.length}</span></div>
+      <div class="track"><div class="fill" style="width:${Math.round(100*(state.step+1)/DATA.steps.length)}%"></div></div>
+      <span class="smalltag">${s.tag}</span>
+      <h2>${s.title}</h2>
+      <p class="desc">${s.description}</p>
+      ${s.say ? `<div class="chant">
+        <small>الذكر أو القراءة المرتبطة بالخطوة</small>
+        <strong>${s.say}</strong>
+        ${audio ? `<button class="soundbutton" onclick="playMedia(${state.step})">${I('volume')} استمع للتسجيل</button>`
+                : `<button class="mutedbutton" onclick="openMedia()">${I('volume')} أضف تسجيلًا بشريًا</button>`}
+      </div>
+      <span class="underchant">${audio ? 'التسجيل الذي أضفته محفوظ على هذا الجهاز.' : 'لا يوجد تسجيل بشري مرفق لهذه الخطوة بعد.'}</span>` : ''}
+      <div class="sourcenote"><b>معلومة مهمة:</b> ${s.note}<br><b>المرجع:</b> ${s.page}</div>
+      <div class="actionrow">
+        <button class="secondary" ${state.step===0?'disabled':''} onclick="moveStep(-1)">${I('arrow')} السابق</button>
+        <button class="primary" onclick="moveStep(1)">${state.step===DATA.steps.length-1?'إعادة من البداية':'التالي'} ${I('arrow')}</button>
+      </div>
+    </div>
+  </div>
+  <div class="helpbanner">
+    ${I('info')}
+    <div>هذا تسلسل تعليمي مبسّط يعرض أبرز الحركات والأحكام؛ تتكرر أفعال الركعة بحسب عدد ركعات الصلاة. الصور المرفقة مقتبسة من المرجع المدرسي، وتُضاف التسجيلات الأصلية لاحقًا.</div>
+  </div>`;
+}
+
+function moveStep(n) {
+  state.step = (state.step + n + DATA.steps.length) % DATA.steps.length;
+  safeSet('salati_step', String(state.step));
+  render();
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+/* ====== Quiz ====== */
+function quizPage() {
+  const q = DATA.questions[state.quiz];
+
+  if (state.completed) {
+    const pct = Math.round((state.score / DATA.questions.length) * 100);
+    return `<div class="pagehead"><h1>نتيجة اختبارك</h1><p>اختبار تفاعلي من موضوعات المرجعين.</p></div>
+    <section class="quizcard" style="text-align:center">
+      <div style="width:80px;height:80px;margin:0 auto;background:var(--teal-soft);border-radius:50%;display:grid;place-items:center;color:var(--teal)">
+        ${I('award')}
+      </div>
+      <h2 style="margin-top:16px">أحسنت! اكتمل الاختبار</h2>
+      <p style="color:var(--muted)">يمكنك إعادة التجربة لتحسين نتيجتك.</p>
+      <div class="quizstats">
+        <div><b>${state.score}</b><small>إجابة صحيحة</small></div>
+        <div><b>${DATA.questions.length}</b><small>عدد الأسئلة</small></div>
+        <div><b>${pct}%</b><small>نسبة الإجابات الصحيحة</small></div>
+      </div>
+      <div class="startsteps"><button class="primary" onclick="restartQuiz()">${I('rotate')} إعادة الاختبار</button></div>
+    </section>`;
+  }
+
+  return `<div class="pagehead">
+    <div class="crumbs"><button onclick="changePage('home')">الرئيسية</button> / اختبر نفسك</div>
+    <h1>اختبر معلوماتك</h1>
+    <p>أسئلة بتصحيح فوري وتفسير مرتبط بالمرجع.</p>
+  </div>
+  <section class="quizcard">
+    <div class="quizheader">
+      <span>السؤال ${state.quiz+1} من ${DATA.questions.length}</span>
+      <span>النتيجة: ${state.score}</span>
+    </div>
+    <div class="track"><div class="fill" style="width:${Math.round(100*(state.quiz+1)/DATA.questions.length)}%"></div></div>
+    <h2>${q.q}</h2>
+    <div class="options">
+      ${q.opts.map((o,i) => {
+        let cls = '';
+        if (state.answered) {
+          if (i === q.right) cls = 'correct';
+          else if (i === state.selected) cls = 'wrong';
+        }
+        return `<button class="option ${cls}" ${state.answered?'disabled':''} onclick="selectAnswer(${i})">
+          <span>${'أبجد'[i]}</span>${o}
+        </button>`;
+      }).join('')}
+    </div>
+    ${state.answered ? `<div class="feedback">
+      <strong style="color:${state.selected===q.right?'#248966':'#a65c5c'}">
+        ${state.selected===q.right ? '✓ إجابة صحيحة، أحسنت!' : 'الإجابة الصحيحة: '+q.opts[q.right]}
+      </strong>
+      <p>${q.why}</p>
+      <small>المرجع: ${q.page}</small>
+    </div>
+    <div class="actionrow">
+      <button class="primary" onclick="nextQuestion()" style="min-width:100%">
+        ${state.quiz===DATA.questions.length-1 ? 'عرض النتيجة' : 'السؤال التالي'} ${I('arrow')}
+      </button>
+    </div>` : ''}
+  </section>`;
+}
+
+function selectAnswer(i) {
+  if (state.answered) return;
+  state.selected = i;
+  state.answered = true;
+  if (i === DATA.questions[state.quiz].right) state.score++;
+  render();
+}
+function nextQuestion() {
+  if (state.quiz === DATA.questions.length - 1) state.completed = true;
+  else { state.quiz++; state.answered = false; state.selected = null; }
+  render();
+}
+function restartQuiz() {
+  state.quiz = 0; state.selected = null; state.score = 0;
+  state.answered = false; state.completed = false;
+  render();
+}
+
+/* ====== Render ====== */
+function render() {
+  const p = state.page;
+  const content =
+    p === 'home'    ? home() :
+    p === 'steps'   ? stepsPage() :
+    p === 'courses' ? courses() :
+    p === 'module'  ? modulePage() :
+                      quizPage();
+
+  $('#app').innerHTML = nav() +
+    `<main class="main shell">${content}</main>
+    <footer class="footer"><div class="shell">صلاتي | تعلّم وأتقن · نسخة تعليمية تجريبية مستندة إلى المرجعين المرفقين · الصور المختارة من صفحات المرجع · الوسائط المضافة تُحفظ على جهازك فقط</div></footer>` +
+    bottomNav();
+}
+
+/* ====== Toast ====== */
+function toast(msg) {
+  let t = $('.toast');
+  if (t) t.remove();
+  t = document.createElement('div');
+  t.className = 'toast';
+  t.textContent = msg;
+  document.body.appendChild(t);
+  setTimeout(() => t.remove(), 3400);
+}
+
+/* ====== Media modal ====== */
+function openMedia() {
+  let root = $('#modalRoot');
+  root.innerHTML = `<div class="modaloverlay" onclick="if(event.target===this)closeMedia()">
+    <div class="modal" role="dialog" aria-modal="true" aria-label="إدارة الوسائط">
+      <h2>إضافة الوسائط التعليمية</h2>
+      <p>يمكنك من الآيفون اختيار صورة واقعية أو ملف صوت بشري وإضافته إلى خطوة من خطوات الصلاة. <b>هذا حفظ محلي على جهازك فقط، وليس نشرًا سحابيًا للطلاب.</b></p>
+      <label for="selStep">اختر الخطوة</label>
+      <select id="selStep">${DATA.steps.map((x,i) => `<option value="${i}" ${i===state.step?'selected':''}>${i+1}. ${x.title}</option>`).join('')}</select>
+      <label for="imageFile">صورة تعليمية (اختياري)</label>
+      <input id="imageFile" type="file" accept="image/*">
+      <label for="audioFile">تسجيل صوتي بشري (اختياري)</label>
+      <input id="audioFile" type="file" accept="audio/*">
+      <div class="helpbanner" style="margin-top:16px">
+        ${I('info')}
+        <div>لإضافة صورة أو تسجيل فعليًا، اختر ملفًا من الجهاز ثم اضغط «حفظ الوسائط».</div>
+      </div>
+      <div class="modalbuttons">
+        <button class="secondary" onclick="closeMedia()">إغلاق</button>
+        <button class="primary" onclick="saveMedia()">حفظ الوسائط</button>
+      </div>
+    </div>
+  </div>`;
+}
+function closeMedia() { $('#modalRoot').innerHTML = ''; }
+
+/* ====== IndexedDB media ====== */
+let store = null;
+function dbOpen() {
+  return new Promise((resolve, reject) => {
+    if (!window.indexedDB) { reject(Error('لا يتوفر تخزين محلي')); return; }
+    const r = indexedDB.open('salati_v1_media', 1);
+    r.onupgradeneeded = () => r.result.createObjectStore('items');
+    r.onsuccess = () => { store = r.result; resolve(store); };
+    r.onerror = () => reject(r.error);
+  });
+}
+function dbPut(key, val) {
+  return new Promise((resolve, reject) => {
+    const tx = store.transaction('items', 'readwrite');
+    tx.objectStore('items').put(val, key);
+    tx.oncomplete = () => resolve();
+    tx.onerror = () => reject(tx.error);
+  });
+}
+function dbAll() {
+  return new Promise((resolve, reject) => {
+    const tx = store.transaction('items', 'readonly');
+    const os = tx.objectStore('items');
+    const r = os.openCursor();
+    const tmp = {};
+    r.onsuccess = e => {
+      const c = e.target.result;
+      if (c) { tmp[c.key] = URL.createObjectURL(c.value); c.continue(); }
+      else resolve(tmp);
+    };
+    r.onerror = () => reject(r.error);
+  });
+}
+async function saveMedia() {
+  const n = Number($('#selStep').value);
+  const im = $('#imageFile').files[0];
+  const au = $('#audioFile').files[0];
+  if (!im && !au) { toast('اختر صورة أو ملفًا صوتيًا أولًا'); return; }
+  try {
+    if (!store) await dbOpen();
+    if (im) {
+      if (!im.type.startsWith('image/')) throw Error('الملف ليس صورة');
+      await dbPut('imgStep_'+n, im);
+    }
+    if (au) {
+      if (!au.type.startsWith('audio/')) throw Error('الملف ليس تسجيلًا صوتيًا');
+      await dbPut('audio_'+n, au);
+    }
+    state.media = await dbAll();
+    state.step = n;
+    safeSet('salati_step', String(n));
+    closeMedia();
+    changePage('steps');
+    toast('تم حفظ الوسائط محليًا على هذا الجهاز');
+  } catch(e) {
+    toast('تعذّر الحفظ: ' + (e.message || 'خطأ في التخزين'));
+  }
+}
+
+/* ====== Audio ====== */
+let player = null;
+function playMedia(n) {
+  const src = state.media['audio_'+n];
+  if (!src) { toast('أضف التسجيل البشري أولًا'); return; }
+  if (player) { player.pause(); player = null; }
+  player = new Audio(src);
+  player.play().catch(() => toast('تعذر تشغيل التسجيل'));
+}
+
+/* ====== Boot ====== */
+window.addEventListener('DOMContentLoaded', () => {
+  try { render(); } catch(e) { console.error('salati render', e); }
+  if (!window.indexedDB) return;
+  Promise.race([
+    (async () => { await dbOpen(); return await dbAll(); })(),
+    new Promise((_, reject) => setTimeout(() => reject(Error('timeout')), 2200))
+  ]).then(media => { state.media = media; render(); }).catch(() => {});
+});
+</script>
+</body>
+</html>
